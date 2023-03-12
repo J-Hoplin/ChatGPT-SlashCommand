@@ -9,7 +9,7 @@ services:
     networks:
       - api-network
     volumes:
-      - ./logs:/app/dist/logfile
+      - ./logs:/app/logfile
     environment:
       - DISCORD_API=
       - APPLICATION_ID=
