@@ -1,4 +1,4 @@
-import { CommandInteraction, SlashCommandBuilder, SlashCommandStringOption } from "discord.js";
+import { CommandInteraction, PermissionFlagsBits, SlashCommandBuilder, SlashCommandStringOption } from "discord.js";
 import { DiscordCustomClient } from "../classes";
 import { Command } from "../types";
 import { ChatGPT } from "../app";
@@ -27,6 +27,7 @@ const chatgptcommand: Command = {
     }),
     run: async (client: DiscordCustomClient, interaction: CommandInteraction) => {
         const requestUser = interaction.user.id
+        const requestUserName = interaction.user.username
         /**
          * Use ephemral message so only requester can view his/her 's response
          * Document : https://discordjs.guide/slash-commands/response-methods.html#ephemeral-responses
@@ -35,12 +36,11 @@ const chatgptcommand: Command = {
         const ephemeral = interaction.options.get('ispublic')?.value === 'Yes' ? false : true
         try{
             interaction.reply({
-                content: message,
+                content: `You(${requestUserName}) : ${message}`,
                 ephemeral
             })
             // Get Parent Message ID of user's chat stream
             let streamID = await v4Client.get(requestUser)
-            console.log(streamID)
             // Get result
             const res = await ChatGPT(message,streamID)
             if(!streamID){

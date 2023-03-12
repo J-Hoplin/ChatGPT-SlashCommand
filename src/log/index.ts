@@ -37,7 +37,7 @@ const logger: Levels = <Levels>createLogger({
     levels: options.levels,
     format: format.combine(
         format.label({
-            label: '[Weather-Hook]'
+            label: '[Chat-GPT Command]'
         }),
         format.timestamp({
             format: 'YYYY-MM-DD HH:mm:ss'

@@ -45,7 +45,7 @@ client.on(Events.ClientReady,() => {
 client.on(Events.InteractionCreate,(interaction) => {
     interactionCreate(client,interaction)
 })
-
+logger.info(process.env.DISCORD_API)
 
 
 client.login(process.env.DISCORD_API);

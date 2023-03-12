@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  chatgpt:
+    build: .
+    image: "chatgpt-command"
+    restart: "unless-stopped"
+    depends_on:
+      - redis
+    networks:
+      - api-network
+    volumes:
+      - commandlogs:/app/dist/logfile
+    environment:
+      - DISCORD_API=
+      - OPENAI_API=
+      - APPLICATION_ID=
+      - GUILD_ID=
+  redis:
+    image: redis
+    restart: "unless-stopped"
+    ports:
+      - "6379:6379"
+    networks:
+      - api-network
+networks:
+  api-network:
+    driver: bridge
+volumes:
+  commandlogs:
