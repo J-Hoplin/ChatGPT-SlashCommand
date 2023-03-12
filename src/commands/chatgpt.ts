@@ -57,7 +57,7 @@ const chatgptcommand: Command = {
         }catch(err){
             logger.error(`Unexpected Behavior | User : ${interaction.user.username} / Message : ${message}`)
             await interaction.followUp({
-                content: "Something went wrong while processing request. Please contact to Administrator",
+                content: `Sorry @${requestUser} something went wrong while processing request😓. Please contact to Administrator`,
                 ephemeral
             })
         }

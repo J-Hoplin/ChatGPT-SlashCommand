@@ -18,6 +18,10 @@ Chat-GPT discord command
     - Make right click on Guild's icon and click `Copy ID`
 - OPENAI_API
     - Get OpenAI API key in [here](https://platform.openai.com/docs/quickstart/build-your-application)
+
+- Make privileged gateway intent as active in [here](https://discord.com/developers/applications).(tab `Bot`)
+    ![img](img/4.png)
+
 ## Start Application
 ***
 
@@ -44,6 +48,8 @@ Chat-GPT discord command
     docker-compose up -d
     ```
 ## How to use command?
+
+### `/ask-gpt`
 1. Press `/` button and you can see command `/ask-gpt`
     ![img](./img/1.png)
 
@@ -51,3 +57,7 @@ Chat-GPT discord command
     ![img](./img/2.png)
 3. If you want to make your command public add `ispulbic` option when using command
     ![img](./img/3.png)
+
+### `/ping`
+1. Press `/` button and you can see command `/ping`
+2. If you want to make your command public add `ispulbic` option when using command(same with `/ask-gpt`!)
