@@ -1,5 +1,6 @@
 import {REST,Routes} from 'discord.js'
 import { DiscordCustomClient } from '../classes'
+import logger from '../log/index'
 
 const deploy = async (client: DiscordCustomClient) => {
     const commands = client.commands.map(command => {
@@ -11,7 +12,7 @@ const deploy = async (client: DiscordCustomClient) => {
         Routes.applicationGuildCommands(process.env.APPLICATION_ID as string, process.env.GUILD_ID as string),
         {body: commands}
     )
-    console.log(`Total ${(datas as any[]).length}`)
+    logger.info(`Total enrolled command : ${(datas as any[]).length} command(s)`)
 }
 
 export default deploy

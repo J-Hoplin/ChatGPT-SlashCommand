@@ -3,6 +3,7 @@ import { DiscordCustomClient } from "../classes";
 import { Command } from "../types";
 import { ChatGPT } from "../app";
 import v4Client from '../redis'
+import logger from "../log/index";
 
 const chatgptcommand: Command = {
     data: new SlashCommandBuilder()
@@ -32,18 +33,34 @@ const chatgptcommand: Command = {
          */
         const message = interaction.options.get('question')!.value as string
         const ephemeral = interaction.options.get('ispublic')?.value === 'Yes' ? false : true
-        interaction.reply({
-            content: message,
-            ephemeral
-        })
-
-        // Get result
-        const res = await ChatGPT(message)
-        console.log(res.parentMessageId)
-        await interaction.followUp({
-            content: res.text,
-            ephemeral
-        });
+        try{
+            interaction.reply({
+                content: message,
+                ephemeral
+            })
+            // Get Parent Message ID of user's chat stream
+            let streamID = await v4Client.get(requestUser)
+            console.log(streamID)
+            // Get result
+            const res = await ChatGPT(message,streamID)
+            if(!streamID){
+                await v4Client.set(requestUser,res.id)
+                streamID = res.id
+            }
+            logger.info(`User : ${interaction.user.username} / Message : ${message} / Session : ${streamID}`)
+            // Refresh Parent message id
+            // await v4Client.set(requestUser,res.id)
+            await interaction.followUp({
+                content: res.text,
+                ephemeral
+            });
+        }catch(err){
+            logger.error(`Unexpected Behavior | User : ${interaction.user.username} / Message : ${message}`)
+            await interaction.followUp({
+                content: "Something went wrong while processing request. Please contact to Administrator",
+                ephemeral
+            })
+        }
     }
 }
 

@@ -12,7 +12,8 @@
     "discordx": "^11.7.1",
     "dotenv": "^16.0.3",
     "node-fetch": "^2.6.9",
-    "redis": "^4.6.5"
+    "redis": "^4.6.5",
+    "winston": "^3.8.2"
   },
   "scripts": {
     "compile": "./node_modules/.bin/tsc",

@@ -4,6 +4,7 @@ import {config} from 'dotenv'
 import * as Discord from './classes'
 import { Events, GatewayIntentBits, Collection, CommandInteraction, Interaction} from 'discord.js'
 import {ready,interactionCreate} from "./events" 
+import logger from './log'
 config({
     path: path.join(__dirname,"../.env")
 })
@@ -26,11 +27,11 @@ const client: Discord.DiscordCustomClient = new Discord.DiscordCustomClient({
 })
 // enroll command
 client.commands.set(chatgptcommand.data.name,chatgptcommand);
+
 (async () => await deploy(client))()
 
-console.log(client.commands)
 client.once(Events.ClientReady, info => {
-    console.log(`I'm ready! Logged in as ${info.user.tag}`)
+    logger.info(`I'm ready! Logged in as ${info.user.tag}`)
 })
 
 /**
