@@ -1,4 +1,3 @@
-//MTA4MzI1OTIxNTcwNTAyMjU1NQ.Gtnubl.No3lEZHQsIRWneqp8CBIS-OBPTQyYhf4npK7I8
 import path from 'path'
 import {config} from 'dotenv'
 import * as Discord from './classes'
