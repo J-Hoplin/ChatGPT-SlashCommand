@@ -9,12 +9,12 @@ services:
     networks:
       - api-network
     volumes:
-      - commandlogs:/app/dist/logfile
+      - ./logs:/app/dist/logfile
     environment:
       - DISCORD_API=
-      - OPENAI_API=
       - APPLICATION_ID=
       - GUILD_ID=
+      - OPENAI_API=
   redis:
     image: redis
     restart: "unless-stopped"
