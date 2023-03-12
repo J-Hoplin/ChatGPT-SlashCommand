@@ -23,7 +23,7 @@ Chat-GPT discord command
 
 1. git clone project
     ```bash
-    git clone https://github.com/J-hoplin1/ChatGPT-Slash.git
+    git clone https://github.com/J-hoplin1/ChatGPT-SlashCommand.git
     ```
 
 2. Write down API Keys, in [docker-compose.yml](./docker-compose.yml), `environment` field
