@@ -47,7 +47,7 @@ Chat-GPT discord command
 1. Press `/` button and you can see command `/ask-gpt`
     ![img](./img/1.png)
 
-2. When you use a command, you are the only one who can see the command and its answers.
+2. When you use a command, you are the only one who can see the command and its answers. **Warning : These types of message and responses is temporary message. It will disappear when you exit discord**
     ![img](./img/2.png)
 3. If you want to make your command public add `ispulbic` option when using command
     ![img](./img/3.png)
