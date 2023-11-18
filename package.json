@@ -7,11 +7,11 @@
   },
   "dependencies": {
     "@discordjs/builders": "^1.4.0",
-    "chatgpt": "^5.0.9",
     "discord.js": "^14.7.1",
     "discordx": "^11.7.1",
     "dotenv": "^16.0.3",
     "node-fetch": "^2.6.9",
+    "openai": "^4.19.0",
     "redis": "^4.6.5",
     "winston": "^3.8.2"
   },

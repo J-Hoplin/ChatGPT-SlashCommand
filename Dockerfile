@@ -10,5 +10,5 @@ RUN npm i
 
 VOLUME [ "/app/dist/logfile" ]
 
-CMD [ "start" ]
-ENTRYPOINT [ "npm", "run" ]
+CMD [ "src" ]
+ENTRYPOINT [ "npx", "ts-node" ]
