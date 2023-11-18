@@ -1,14 +1,27 @@
-const ChatGPT = async (message:string,streamID:string|null) => {
-    const { ChatGPTAPI } = await import('chatgpt')
-    const api = new ChatGPTAPI({
-        apiKey: process.env.OPENAI_API as string,
-    })
-    const res = streamID 
-    ? await api.sendMessage(message,{
-        parentMessageId: streamID
-    })
-    : await api.sendMessage(message) 
-    return res
-}
+import { OpenAI } from "openai";
 
-export default ChatGPT
+const openAI = new OpenAI({
+  apiKey: process.env.OPENAI_API,
+});
+
+const ChatGPT = async (
+  message: string
+): Promise<OpenAI.Chat.Completions.ChatCompletion> => {
+  const chat = await openAI.chat.completions.create({
+    model: "gpt-4",
+    temperature: 0.5,
+    messages: [
+      {
+        role: "system",
+        content: "Please answer less than 2000 strings",
+      },
+      {
+        role: "user",
+        content: message,
+      },
+    ],
+  });
+  return chat;
+};
+
+export default ChatGPT;

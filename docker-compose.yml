@@ -1,11 +1,9 @@
-version: '3.7'
+version: "3.7"
 services:
   chatgpt:
     build: .
     image: "chatgpt-command"
     restart: "unless-stopped"
-    depends_on:
-      - redis
     networks:
       - api-network
     volumes:
@@ -15,13 +13,6 @@ services:
       - APPLICATION_ID=
       - GUILD_ID=
       - OPENAI_API=
-  redis:
-    image: redis
-    restart: "unless-stopped"
-    ports:
-      - "6379:6379"
-    networks:
-      - api-network
 networks:
   api-network:
     driver: bridge
