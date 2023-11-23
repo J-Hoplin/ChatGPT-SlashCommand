@@ -8,7 +8,7 @@ const ChatGPT = async (
   message: string
 ): Promise<OpenAI.Chat.Completions.ChatCompletion> => {
   const chat = await openAI.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4-1106-preview",
     temperature: 0.5,
     messages: [
       {
