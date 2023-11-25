@@ -15,6 +15,8 @@ config({
 import { chatgptcommand, pingcommand } from "./commands";
 import { deploy } from "./deploy";
 
+config();
+
 const client: Discord.DiscordCustomClient = new Discord.DiscordCustomClient({
   intents: [
     GatewayIntentBits.Guilds,

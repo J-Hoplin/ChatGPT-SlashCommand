@@ -13,7 +13,7 @@ const ChatGPT = async (
     messages: [
       {
         role: "system",
-        content: "Please answer less than 2000 strings",
+        content: "Answer in concise manner.",
       },
       {
         role: "user",
