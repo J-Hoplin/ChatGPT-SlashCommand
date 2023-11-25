@@ -17,6 +17,10 @@
   },
   "scripts": {
     "compile": "./node_modules/.bin/tsc",
-    "start": "./node_modules/.bin/tsc && node ./dist"
+    "start": "./node_modules/.bin/tsc && node ./dist",
+    "stop": "docker-compose down",
+    "stop:su": "sudo docker-compose down",
+    "deploy": "docker-compose build --no-cache && docker-compose up -d",
+    "deploy:su":"sudo docker-compose build --no-cache && sudo docker-compose up -d"
   }
 }
